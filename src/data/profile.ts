@@ -3,13 +3,13 @@
 
 export const profile = {
   name: 'Manos Adamopoulos',
-  role: 'Software / AI Engineer',
-  tagline: 'LLM, data & ML systems',
+  role: 'Data / AI Engineer',
+  tagline: 'LLM, Data & ML systems',
   intro:
     'I design, ship and operate Python backends and ML/LLM systems on Google Cloud, owning everything from requirements to CI/CD, deployment and monitoring.',
   summary: [
-    'Senior Software Engineer with 3+ years building production Python services and ML/LLM systems on Google Cloud (Cloud Run, Kubernetes). Two MSc degrees in STEM, both with honors.',
-    'I have spent 6+ years working directly with clients and startups, turning real business problems into high-impact technical solutions. Today I build agent skills and RAG systems at the core of GWI’s AI transformation, and I am part of the AI Enablement team defining agentic engineering standards across the organisation.',
+    'Software Engineer with <strong>4 years</strong> building production Python services and ML/LLM systems on <strong>Google Cloud</strong> (Cloud Run, Kubernetes). Two MSc degrees in STEM, both with honors.',
+    'I have spent <strong>6+ years</strong> working directly with clients in startups, turning real business problems into high-impact technical solutions. Today I build <strong>AI Agents you can trust</strong>, at the core of GWI’s AI transformation, and I am part of the <strong>AI Enablement team</strong> defining agentic engineering standards across the organisation.',
   ],
   email: 'man.adamopoulos@gmail.com',
   github: 'https://github.com/manKraut',
