@@ -1,0 +1,22 @@
+---
+import { getCollection } from 'astro:content';
+import Section from './Section.astro';
+import ProjectCard from './ProjectCard.astro';
+
+// Every non-draft Markdown file in src/content/projects/, newest first.
+const projects = (await getCollection('projects', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
+);
+---
+
+<Section id="projects" title="Personal projects">
+  {
+    projects.length === 0 ? (
+      <p class="text-sm text-slate-500">Projects coming soon.</p>
+    ) : (
+      <div class="grid gap-6 md:grid-cols-2">
+        {projects.map((project) => <ProjectCard project={project} />)}
+      </div>
+    )
+  }
+</Section>

@@ -1,0 +1,16 @@
+---
+// Shared wrapper so every section has the same spacing and heading style.
+interface Props {
+  id: string;
+  title: string;
+}
+const { id, title } = Astro.props;
+---
+
+<section id={id} class="mx-auto max-w-5xl px-6 py-16 sm:py-20">
+  <h2 class="mb-8 flex items-center gap-4 text-sm font-semibold uppercase tracking-widest text-accent dark:text-accent-soft">
+    {title}
+    <span class="h-px flex-1 bg-slate-200 dark:bg-slate-800"></span>
+  </h2>
+  <slot />
+</section>

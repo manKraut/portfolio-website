@@ -1,0 +1,42 @@
+---
+import Section from './Section.astro';
+import { profile } from '../data/profile';
+
+const links = [
+  { label: 'Email', href: `mailto:${profile.email}`, text: profile.email },
+  { label: 'GitHub', href: profile.github, text: profile.github.replace('https://', '') },
+  ...(profile.linkedin
+    ? [{ label: 'LinkedIn', href: profile.linkedin, text: profile.linkedin.replace('https://', '') }]
+    : []),
+];
+---
+
+<Section id="contact" title="Contact">
+  <div class="max-w-xl">
+    <p class="text-2xl font-semibold text-slate-900 dark:text-white">Let’s build something.</p>
+    <p class="mt-3 leading-relaxed">
+      I’m always happy to talk about AI systems, data engineering, or interesting problems. The
+      inbox is open.
+    </p>
+
+    <a
+      href={`mailto:${profile.email}`}
+      class="mt-6 inline-block rounded-lg bg-accent px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-indigo-500"
+    >
+      Say hello
+    </a>
+
+    <ul class="mt-8 space-y-2 text-sm">
+      {
+        links.map((l) => (
+          <li>
+            <span class="inline-block w-20 text-slate-500 dark:text-slate-400">{l.label}</span>
+            <a href={l.href} class="hover:text-accent dark:hover:text-accent-soft" target={l.href.startsWith('http') ? '_blank' : undefined} rel="noopener">
+              {l.text}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</Section>
