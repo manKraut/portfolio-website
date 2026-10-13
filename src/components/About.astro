@@ -5,18 +5,18 @@ import { profile, education } from '../data/profile';
 
 <Section id="about" title="About">
   <div class="grid gap-10 md:grid-cols-3">
-    <div class="space-y-4 text-base leading-relaxed md:col-span-2">
+    <div class="space-y-5 text-lg leading-relaxed text-muted md:col-span-2">
       {profile.summary.map((p) => <p>{p}</p>)}
     </div>
 
-    <div>
-      <h3 class="mb-3 text-sm font-semibold text-slate-900 dark:text-white">Education</h3>
-      <ul class="space-y-4 text-sm">
+    <div class="rounded-2xl border border-line bg-surface p-6 shadow-sm">
+      <h3 class="mb-4 text-xl font-semibold text-sage">Education</h3>
+      <ul class="space-y-5">
         {
           education.map((e) => (
-            <li>
-              <p class="font-medium text-slate-900 dark:text-slate-100">{e.degree}</p>
-              <p class="text-slate-500 dark:text-slate-400">
+            <li class="border-l-2 border-gold pl-4">
+              <p class="font-semibold text-ink">{e.degree}</p>
+              <p class="text-sm text-muted">
                 {e.school} · {e.grade}
               </p>
             </li>

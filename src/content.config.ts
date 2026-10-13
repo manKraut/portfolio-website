@@ -15,6 +15,8 @@ const projects = defineCollection({
       link: z.string().url().optional(),
       // optional screenshot, relative path, e.g. ./images/my-project.png
       image: image().optional(),
+      // optional extra photos shown as a thumbnail strip, e.g. [./images/a.png, ./images/b.png]
+      gallery: z.array(image()).default([]),
       // set to true to hide a project without deleting the file
       draft: z.boolean().default(false),
     }),

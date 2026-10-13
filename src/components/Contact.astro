@@ -12,26 +12,31 @@ const links = [
 ---
 
 <Section id="contact" title="Contact">
-  <div class="max-w-xl">
-    <p class="text-2xl font-semibold text-slate-900 dark:text-white">Let’s build something.</p>
-    <p class="mt-3 leading-relaxed">
+  <div class="rounded-3xl border border-line bg-surface p-8 shadow-sm sm:p-12">
+    <p class="font-serif text-3xl font-semibold text-ink sm:text-4xl">Let’s build something.</p>
+    <p class="mt-4 max-w-xl text-lg leading-relaxed text-muted">
       I’m always happy to talk about AI systems, data engineering, or interesting problems. The
       inbox is open.
     </p>
 
     <a
       href={`mailto:${profile.email}`}
-      class="mt-6 inline-block rounded-lg bg-accent px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-indigo-500"
+      class="mt-7 inline-block rounded-lg bg-accent px-6 py-3 text-base font-semibold text-on-accent shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
     >
       Say hello
     </a>
 
-    <ul class="mt-8 space-y-2 text-sm">
+    <ul class="mt-9 space-y-3">
       {
         links.map((l) => (
           <li>
-            <span class="inline-block w-20 text-slate-500 dark:text-slate-400">{l.label}</span>
-            <a href={l.href} class="hover:text-accent dark:hover:text-accent-soft" target={l.href.startsWith('http') ? '_blank' : undefined} rel="noopener">
+            <span class="inline-block w-24 font-semibold text-sage">{l.label}</span>
+            <a
+              href={l.href}
+              class="text-muted underline decoration-line underline-offset-4 transition-colors hover:text-accent hover:decoration-accent"
+              target={l.href.startsWith('http') ? '_blank' : undefined}
+              rel="noopener"
+            >
               {l.text}
             </a>
           </li>

@@ -16,6 +16,8 @@ export const profile = {
   // Add more links here (e.g. linkedin: 'https://linkedin.com/in/...'); they appear in the contact section.
   linkedin: '' as string,
   cv: '/Manos_Adamopoulos_CV.pdf',
+  // Optional portrait: put a file in public/ (e.g. public/me.jpg) and set photo: '/me.jpg'
+  photo: '' as string,
 };
 
 export type Job = {

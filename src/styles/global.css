@@ -3,28 +3,101 @@
 /* Dark mode is toggled by a `dark` class on <html> (see Layout.astro) */
 @custom-variant dark (&:where(.dark, .dark *));
 
-@theme {
-  --font-sans: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  --color-accent: #6366f1;
-  --color-accent-soft: #818cf8;
+/* Warm sepia palette. Edit the values here to re-colour the whole site. */
+:root {
+  --paper: #f5ecdc;
+  --surface: #fffaf0;
+  --sunken: #ecdfc8;
+  --ink: #2b1f16;
+  --muted: #6b5844;
+  --line: #dfcfb2;
+  --accent: #b5441c; /* terracotta */
+  --sage: #1d6b66; /* deep teal */
+  --gold: #b9780b; /* mustard */
+  --on-accent: #fffaf0;
+}
+
+.dark {
+  --paper: #17110d;
+  --surface: #221913;
+  --sunken: #2c2119;
+  --ink: #f3e8d4;
+  --muted: #b7a58d;
+  --line: #3b2e23;
+  --accent: #ee8d5f;
+  --sage: #55b9ae;
+  --gold: #e8b24a;
+  --on-accent: #1f140c;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --font-sans: 'Figtree', ui-sans-serif, system-ui, sans-serif;
+  --font-serif: 'Fraunces', ui-serif, Georgia, serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, Menlo, monospace;
+  --color-paper: var(--paper);
+  --color-surface: var(--surface);
+  --color-sunken: var(--sunken);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-sage: var(--sage);
+  --color-gold: var(--gold);
+  --color-on-accent: var(--on-accent);
 }
 
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 5rem;
+  font-size: 18px; /* bigger base size: everything in rem scales up */
 }
 
 body {
-  @apply bg-slate-50 text-slate-700 antialiased dark:bg-slate-950 dark:text-slate-300;
+  @apply bg-paper font-sans text-ink antialiased;
+  transition: background-color 0.3s, color 0.3s;
+  background-image:
+    radial-gradient(60rem 30rem at 85% -5%, color-mix(in srgb, var(--accent) 14%, transparent), transparent),
+    radial-gradient(50rem 30rem at -10% 35%, color-mix(in srgb, var(--sage) 11%, transparent), transparent);
+  background-attachment: fixed;
+}
+
+h1,
+h2,
+h3 {
+  @apply font-serif;
 }
 
 ::selection {
-  background: color-mix(in srgb, var(--color-accent) 30%, transparent);
+  background: color-mix(in srgb, var(--accent) 30%, transparent);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* subtle fade-up on scroll (enabled by script in Layout.astro) */
+.reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
   }
 }

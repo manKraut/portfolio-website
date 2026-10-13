@@ -12,10 +12,10 @@ const projects = (await getCollection('projects', ({ data }) => !data.draft)).so
 <Section id="projects" title="Personal projects">
   {
     projects.length === 0 ? (
-      <p class="text-sm text-slate-500">Projects coming soon.</p>
+      <p class="text-muted">Projects coming soon.</p>
     ) : (
       <div class="grid gap-6 md:grid-cols-2">
-        {projects.map((project) => <ProjectCard project={project} />)}
+        {projects.map((project, i) => <ProjectCard project={project} index={i} />)}
       </div>
     )
   }
