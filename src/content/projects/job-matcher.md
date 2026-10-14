@@ -3,7 +3,8 @@ title: Job Matcher
 description: A full-stack AI platform where job seekers describe roles in natural language, search listings from extracted preferences, and get concise explanations of why results fit.
 date: 2026-03-01
 tech: [Python, FastAPI, React, TypeScript, OpenAI, ChromaDB, Docker, Kubernetes]
-# repo: https://github.com/manKraut/<repo-name>
+repo: https://github.com/manKraut/job-matcher
+# link: https://job-matcher.YOUR-DOMAIN.com   # <- LATER: uncomment + set your subdomain; the whole card will then open it instead of GitHub
 ---
 
 - Sequential multi-agent backend (preference extraction and match advisor) with evidence-backed prompts from vector retrieval over API docs (`text-embedding-3-small`, ChromaDB).
