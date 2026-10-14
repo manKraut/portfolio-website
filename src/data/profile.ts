@@ -24,8 +24,12 @@ export type Job = {
   title: string;
   company: string;
   period: string;
+  // optional one-liner about the company
   blurb?: string;
-  highlights: string[];
+  // short pitch always visible on the card
+  brief: string;
+  // shown when the card is expanded; `heading` is optional (use it to group bullets by project)
+  sections: { heading?: string; highlights: string[] }[];
 };
 
 export const experience: Job[] = [
@@ -33,39 +37,77 @@ export const experience: Job[] = [
     title: 'AI Cloud Engineer',
     company: 'GWI',
     period: 'Oct 2024 – Present',
-    highlights: [
-      'Architected a production AI orchestration backend (Python/Django) for an LLM-driven synthetic survey platform; parallelised batch generation with a Redis-backed worker tier, cutting end-to-end runtime by ~94%.',
-      'Operate cloud-native infrastructure on GKE with Helm, Terraform/Terragrunt, HPA and Prometheus alerting; built the RAG-based synthetic-respondent engine and an evaluation harness benchmarking synthetic vs. real respondents.',
-      'Productionised an event-driven ML microservice on GCP (Cloud Run, Pub/Sub) and designed a GPT-4o function-calling agent that autonomously rebalances audience segments.',
-      'DevOps Champion and AI Enablement member: drive agentic engineering standards, per-product cost attribution, and AI literacy across the company.',
+    brief:
+      'I build and run the AI backends and cloud infrastructure behind GWI’s LLM-driven products, from synthetic survey generation to ML segmentation pipelines, and help set agentic engineering standards across the company.',
+    sections: [
+      {
+        heading: 'Lynx – Synthetic Survey Generation Agent (RAG)',
+        highlights: [
+          'Architected and shipped a production AI orchestration backend (Python/Django, DRF) for an LLM-driven synthetic survey platform: FSM-based job lifecycle with row-level concurrency control and idempotent retries; parallelized the respondent batch-generation pipeline with a Redis-backed async worker tier and graceful long-job shutdowns, cutting end-to-end runtime by ~94% (77+ PRs, ~400 commits).',
+          'Deployed and operated cloud-native infrastructure on GKE via custom Helm charts and Terraform/Terragrunt: Workload Identity, KMS-encrypted secrets, Cloud SQL, multi-env (staging/prod) with HPA, PDBs and Prometheus alerting; automated object-storage → BigQuery ingestion feeding the company’s data platform.',
+          'Built an LLM synthetic-respondent engine: semantic few-shot retrieval over a 483-question, 1,536-dim embedding index, Big5-persona-conditioned generation, largest-remainder demographic quota sampling, and parallel batch execution; created an evaluation harness benchmarking synthetic vs. real respondents across 5 metric families.',
+        ],
+      },
+      {
+        heading: 'Segmentation Integration Automation (SIA) – ML pipeline predicting custom audience segments on GWI’s Core dataset',
+        highlights: [
+          'Engineered and productionized an event-driven ML post-processing microservice on GCP (Cloud Run, Pub/Sub, Docker, Terraform) that rebalances weighted audience distributions for tens of thousands of respondents per run, guaranteeing convergence within 0.5% of market targets via a deterministic, parallelized iterative optimizer with early stopping.',
+          'Designed a novel LLM-agent optimizer (GPT-4o function-calling loop, 3 custom domain tools) that autonomously measures distribution divergence and reweights segment assignments; extended the engine to multilabel segmentation and achieved 100% ground-truth respondent retention, fixing a production-critical reassignment defect.',
+        ],
+      },
+      {
+        heading: 'Platform and company-wide initiatives',
+        highlights: [
+          'Led adoption of engineering standards for the department as DevOps Champion, driving AI agentic engineering harness adoption via the AI Enablement team and migrating department infrastructure into GWI’s central Terraform repo with resource labelling that enabled per-product cost attribution.',
+          'Drive AI literacy across the organisation: speak at public discussions and run an AI News Forum that keeps teams informed on developments and encourages adoption.',
+        ],
+      },
     ],
   },
   {
     title: 'Data Engineer',
     company: 'GWI',
     period: 'Oct 2023 – Oct 2024',
-    highlights: [
-      'Replaced legacy SPSS processing with a BigQuery ETL pipeline, cutting runtime from 12 hours to 1 hour (~90%).',
-      'Integrated the ML pipeline with the Segmentation API over authenticated REST, decoupling file I/O from the workflow engine.',
+    brief:
+      'I modernised GWI’s data processing and connected its ML pipeline to product APIs, replacing slow legacy workflows with versioned, automated ones.',
+    sections: [
+      {
+        highlights: [
+          'Integrated the ML pipeline with the product team’s Segmentation API over authenticated REST calls, decoupling GCS file I/O from the workflow engine.',
+          'Replaced legacy SPSS processing with a BigQuery ETL pipeline, consolidating 3 data sources into one version-controlled transformation layer. The pipeline cut its runtime from 12 hours to 1 hour (~90% reduction).',
+        ],
+      },
     ],
   },
   {
     title: 'Solutions Engineer',
     company: 'Linked Business',
     period: 'Mar 2021 – Oct 2023',
-    blurb: 'KYC and credit-intelligence platform covering 800K+ Greek companies.',
-    highlights: [
-      'Owned technical relationships with systemic banks and credit servicers: integration scoping, security reviews and go-lives.',
-      'Cut authentication tickets by 40% in a quarter and shipped Playwright regression tests in CI/CD.',
-      'Drove 50% API usage growth in 6 months by delivering a bulk Excel export endpoint from client interviews.',
+    blurb: 'Market and credit intelligence (KYC) platform covering 800K+ Greek companies; clients include systemic banks and credit-servicing firms.',
+    brief:
+      'I was the technical link between the platform and its banking clients: scoping integrations, fixing recurring pain points, and turning client feedback into shipped features.',
+    sections: [
+      {
+        highlights: [
+          'Owned technical relationships with systemic banks and credit servicers, leading integration scoping, security reviews, and go-live of KYC onboarding and credit-check workflows; turned client pain points into prioritised roadmap fixes.',
+          'Cut authentication tickets 40% in one quarter via root-cause analysis of recurring login failures; shipped the fix with Playwright regression tests in CI/CD so the failure class cannot silently return.',
+          'Drove 50% API usage growth in 6 months: turned client interviews into a prioritised roadmap item, then scoped and delivered a bulk Excel export endpoint.',
+        ],
+      },
     ],
   },
   {
     title: 'Technical Project Manager',
     company: 'Sociality co-op',
     period: 'Dec 2019 – Mar 2021',
-    highlights: [
-      'Led a team of 6 developers delivering a CMS, member portal and ticketing system (TypeScript, React, Node.js, PostgreSQL), driving a 40% increase in ticket sales in one quarter.',
+    brief:
+      'I led a small engineering team building web platforms for a cooperative, from planning through delivery.',
+    sections: [
+      {
+        highlights: [
+          'Led a team of 6 developers to deliver web platforms, including a unified CMS, member portal and ticketing system (TypeScript, React, Node.js, PostgreSQL), driving a 40% increase in ticket sales within one quarter.',
+        ],
+      },
     ],
   },
 ];
