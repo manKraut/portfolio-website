@@ -3,13 +3,13 @@
 
 export const profile = {
   name: 'Manos Adamopoulos',
-  role: 'Data / AI Engineer',
+  role: 'AI Engineer',
   tagline: 'LLM, Data & ML systems',
   intro:
-    'I design, ship and operate Python backends and ML/LLM systems on Google Cloud, owning everything from requirements to CI/CD, deployment and monitoring.',
+    'I architect, ship and operate reliable AI and ML systems on the cloud, owning the full lifecycle from requirements to CI/CD, deployment and monitoring.',
   summary: [
-    'Software Engineer with 4 years building production Python services and ML/LLM systems on Google Cloud (Cloud Run, Kubernetes). Two MSc degrees in STEM, both with honors.',
-    'I have spent 6+ years working directly with clients in startups, turning real business problems into high-impact technical solutions. Today I build AI Agents you can trust, at the core of GWI’s AI transformation, and I am part of the AI Enablement team defining agentic engineering standards across the organisation.',
+    'Senior AI Engineer with 5+ years architecting and shipping reliable AI and ML systems on Cloud, owning the full lifecycle from requirements through CI/CD, deployment, and monitoring. Two MSc degrees in Software and Engineering, both with honors.',
+    'I have worked mostly with startups within ambiguous and fast-moving environments. Currently building agent skills and RAG systems at the core of GWI’s AI transformation, and a member of the AI Enablement team defining agentic engineering standards across the organisation.',
   ],
   email: 'man.adamopoulos@gmail.com',
   github: 'https://github.com/manKraut',
@@ -34,18 +34,18 @@ export type Job = {
 
 export const experience: Job[] = [
   {
-    title: 'AI Cloud Engineer',
+    title: 'Sr. AI Engineer',
     company: 'GWI',
-    period: 'Oct 2024 – Present',
+    period: 'Oct 2023 – Present',
     brief:
       'I build and run the AI backends and cloud infrastructure behind GWI’s LLM-driven products, from synthetic survey generation to ML segmentation pipelines, and help set agentic engineering standards across the company.',
     sections: [
       {
         heading: 'Lynx – Synthetic Survey Generation Agent (RAG)',
         highlights: [
-          'Architected and shipped a production AI orchestration backend (Python/Django, DRF) for an LLM-driven synthetic survey platform: FSM-based job lifecycle with row-level concurrency control and idempotent retries; parallelized the respondent batch-generation pipeline with a Redis-backed async worker tier and graceful long-job shutdowns, cutting end-to-end runtime by ~94% (77+ PRs, ~400 commits).',
-          'Deployed and operated cloud-native infrastructure on GKE via custom Helm charts and Terraform/Terragrunt: Workload Identity, KMS-encrypted secrets, Cloud SQL, multi-env (staging/prod) with HPA, PDBs and Prometheus alerting; automated object-storage → BigQuery ingestion feeding the company’s data platform.',
-          'Built an LLM synthetic-respondent engine: semantic few-shot retrieval over a 483-question, 1,536-dim embedding index, Big5-persona-conditioned generation, largest-remainder demographic quota sampling, and parallel batch execution; created an evaluation harness benchmarking synthetic vs. real respondents across 5 metric families.',
+          'Architected and shipped in 3 months a production AI orchestration backend (Python, Django, DRF, Argo Workflows) that produces synthetic survey data from a user hypothesis. A high-end product that cuts survey generation from a month to 5 minutes, serving ~12K requests at peak hour.',
+          'Deployed and operated cloud-native infrastructure on GKE via custom Helm charts and Terraform/Terragrunt.',
+          'Built an LLM synthetic-respondent engine with two-stage RAG (OpenAI embeddings, cosine top-k) that grounds survey drafting in curated example questions and each simulated respondent’s answers in real prior survey responses.',
         ],
       },
       {
@@ -65,47 +65,32 @@ export const experience: Job[] = [
     ],
   },
   {
-    title: 'Data Engineer',
-    company: 'GWI',
-    period: 'Oct 2023 – Oct 2024',
-    brief:
-      'I modernised GWI’s data processing and connected its ML pipeline to product APIs, replacing slow legacy workflows with versioned, automated ones.',
-    sections: [
-      {
-        highlights: [
-          'Integrated the ML pipeline with the product team’s Segmentation API over authenticated REST calls, decoupling GCS file I/O from the workflow engine.',
-          'Replaced legacy SPSS processing with a BigQuery ETL pipeline, consolidating 3 data sources into one version-controlled transformation layer. The pipeline cut its runtime from 12 hours to 1 hour (~90% reduction).',
-        ],
-      },
-    ],
-  },
-  {
-    title: 'Solutions Engineer',
+    title: 'MLOps Engineer',
     company: 'Linked Business',
     period: 'Mar 2021 – Oct 2023',
-    blurb: 'Market and credit intelligence (KYC) platform covering 800K+ Greek companies; clients include systemic banks and credit-servicing firms.',
     brief:
-      'I was the technical link between the platform and its banking clients: scoping integrations, fixing recurring pain points, and turning client feedback into shipped features.',
+      'I built the automated data and ML pipelines and services behind a market and credit intelligence platform used by banks and sales teams.',
     sections: [
       {
         highlights: [
-          'Owned technical relationships with systemic banks and credit servicers, leading integration scoping, security reviews, and go-live of KYC onboarding and credit-check workflows; turned client pain points into prioritised roadmap fixes.',
-          'Cut authentication tickets 40% in one quarter via root-cause analysis of recurring login failures; shipped the fix with Playwright regression tests in CI/CD so the failure class cannot silently return.',
-          'Drove 50% API usage growth in 6 months: turned client interviews into a prioritised roadmap item, then scoped and delivered a bulk Excel export endpoint.',
+          'Architected and built two automated pipelines: batch (Airflow-orchestrated, for quarterly releases) and streaming (event-driven, with scheduled pollers detecting source changes), replacing a manual data-retrieval process, saving 3 engineer-days per quarter and moving data freshness from monthly to near real-time.',
+          'Built and deployed ML-driven insight services on Vertex AI (online real-time inference) and Cloud Run. Python FastAPI services retrieved and cleansed source data, which was preprocessed, deduplicated and loaded into BigQuery; a calculation engine then turned model outputs into lead-generation and onboarding insights for banks and sales teams.',
+          'Productionized the platform with MLOps best practices: Dockerized services, CI/CD pipelines for automated testing and deployment, and a highly available Kubernetes cluster for zero-downtime releases and resilient data processing.',
         ],
       },
     ],
   },
   {
-    title: 'Technical Project Manager',
+    title: 'Data Scientist',
     company: 'Sociality co-op',
     period: 'Dec 2019 – Mar 2021',
     brief:
-      'I led a small engineering team building web platforms for a cooperative, from planning through delivery.',
+      'I built analytics pipelines and models on website activity data and advised community-driven projects on data science.',
     sections: [
       {
         highlights: [
-          'Led a team of 6 developers to deliver web platforms, including a unified CMS, member portal and ticketing system (TypeScript, React, Node.js, PostgreSQL), driving a 40% increase in ticket sales within one quarter.',
+          'Built an end-to-end analytics pipeline on website activity data (Python, SQL, dbt, Airflow), using behavioral segmentation and lead-scoring models (scikit-learn, XGBoost) to surface high-potential leads and shape company strategy, with insights delivered through interactive dashboards (Power BI/Streamlit).',
+          'Advised EU-funded, community-driven projects on data science implementation, turning local social data into actionable, evidence-based decisions.',
         ],
       },
     ],
@@ -116,19 +101,19 @@ export const skills: { group: string; items: string[] }[] = [
   { group: 'Languages', items: ['Python', 'SQL', 'TypeScript', 'JavaScript', 'HTML/CSS'] },
   {
     group: 'Backend & APIs',
-    items: ['FastAPI', 'Django REST Framework', 'REST API design', 'Pub/Sub', 'PostgreSQL', 'Redis'],
+    items: ['FastAPI', 'Django REST Framework', 'REST API design', 'Event-driven microservices (Pub/Sub)', 'PostgreSQL', 'Redis'],
   },
   {
     group: 'Cloud & DevOps',
-    items: ['GCP (Cloud Run, GKE, BigQuery, GCS)', 'Docker', 'Kubernetes / Helm', 'Argo Workflows', 'Terraform', 'GitHub Actions'],
-  },
-  {
-    group: 'ML / LLM',
-    items: ['RAG', 'Embeddings', 'ChromaDB', 'LightGBM', 'scikit-learn', 'SHAP', 'Hugging Face / PEFT'],
+    items: ['GCP (Cloud Run, GKE, Cloud Build, Artifact Registry, Secret Manager, GCS, BigQuery)', 'Docker', 'Kubernetes / Helm', 'Argo Workflows', 'Terraform', 'GitHub Actions'],
   },
   {
     group: 'Reliability & security',
-    items: ['Secret Manager / SOPS', 'Sentry', 'Structured logging', 'pytest', 'Playwright'],
+    items: ['Secret Manager / SOPS', 'Signed URLs', 'Sentry', 'Structured logging', 'pytest', 'Playwright'],
+  },
+  {
+    group: 'ML / LLM',
+    items: ['LightGBM', 'scikit-learn', 'SHAP', 'RAG', 'Embeddings', 'ChromaDB', 'Hugging Face / PEFT'],
   },
   { group: 'Frontend', items: ['React', 'Tailwind'] },
 ];
